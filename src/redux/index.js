@@ -95,6 +95,7 @@ export function right() {
 
 const INITIAL_STATE = {
     default: document.execCommand("normal", false, ""),
+    editor: "editor"
 };
 
 function reducer(state = INITIAL_STATE, action) {

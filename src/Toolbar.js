@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, createElement} from "react";
 import { connect } from "react-redux";
 import {
     underline,
@@ -30,7 +30,7 @@ function Toolbar(props) {
     const handleChange = e => {
         const reader = new FileReader();
         reader.onload = () => {
-            const img = React.createElement("img",{src: reader.result});
+            const img = createElement("img",{src: reader.result});
             props.onImgAdd(img);
         };
         reader.readAsDataURL(e.target.files[0]);
@@ -69,7 +69,6 @@ function Toolbar(props) {
 }
 
 export default connect(null,
-    // state => ({editor: state.refs}),
     {
         underline,
         italic,

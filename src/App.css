@@ -88,7 +88,6 @@ html{
 }
 
 
-
 img{
   width: 60px;
   height: 60px;
@@ -98,4 +97,31 @@ img{
 label {
   margin-left: 0.04rem;
   padding-left:.7rem
+}
+
+code {
+  white-space: pre-wrap;
+  word-break: break-word;
+  width:70vw;
+  height: 50vh;
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+@media print {
+  @page {
+    size: landscape;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .section-to-print, .section-to-print * {
+    visibility: visible;
+  }
+  .section-to-print {
+    position: center;
+    left: 0;
+    top: 0;
+  }
 }

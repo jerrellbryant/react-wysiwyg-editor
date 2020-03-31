@@ -1,7 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import Toolbar from "./Toolbar";
+import Buttons from "./Buttons";
+import { connect } from "react-redux";
 
-function Editor() {
+
+function Editor(props) {
+    const editorRef = useRef(props.editor);
+
     const [introText] = useState("Simple React Editor");
     const [subText] = useState("Good to start");
     const [images, setImages] = useState([]);
@@ -30,9 +35,9 @@ function Editor() {
             <>
                 <Toolbar onImgAdd={img => setImages(images => images.concat(img))}/>
 
-                <div className="center">
+                <div className="center section-to-print">
                     <div
-                        className="editor"
+                        ref={editorRef}
                         style={editorStyle}
                         contentEditable={true}
                         suppressContentEditableWarning={true}
@@ -43,8 +48,9 @@ function Editor() {
                     </div>
                 </div>
 
+                <Buttons editorRef={editorRef}/>
             </>
         )
     }
 
-export default (Editor)
+export default connect(state => ({editor: state.editor}), {})(Editor)
